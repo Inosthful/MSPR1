@@ -11,7 +11,7 @@ router.post('/', (req, res) => {
   // Vous pouvez accéder aux données POST avec req.body
   const requestData = req.body;
 
-  res.json({ message: 'Ceci est un exemple de réponse JSON pour la route POST /exemple', data: requestData });
+  res.json({ message: 'Ceci est un exemple de réponse JSOfN pour la route POST /exemple', data: requestData });
 });
 
 // Ajoutez d'autres routes au besoin...
