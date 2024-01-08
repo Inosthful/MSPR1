@@ -13,18 +13,13 @@ import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler
 import Home from './views/Home';
 import Login from './views/Login';
 
-
-
-
-
-
+//j
 
 export default function App() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [showAppOptions, setShowAppOptions] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isLog, setIsLog] = useState(true);
-
 
 // UTILE POUR IMAGE PICKER
   // const pickImageAsync = async () => {
@@ -60,8 +55,7 @@ export default function App() {
     setIsModalVisible(true);
   };
 
-  const onSaveImageAsync = async () => {
-  }; 
+  const onSaveImageAsync = async () => {};
 
   const onModalClose = () => {
     setIsModalVisible(false);
@@ -84,7 +78,6 @@ export default function App() {
      </View>
      </ScrollView>  
      </GestureHandlerRootView>
-
   );
 }
 
