@@ -40,43 +40,19 @@ app.get("/", (req, res) => {
 const userRoutes = require("./src/routes/user.routes.js");
 
 //import des fives routes
-const fiveRoutes = require("./src/routes/five.routes.js");
+const annonceRoutes = require("./src/routes/annonce.routes.js");
 
 //import des reservations routes
-const reservationRoutes = require("./src/routes/reservation.routes.js");
-
-//import des localisations routes
-const localisationRoutes = require("./src/routes/localisation.routes.js");
-
-//import des terrains routes
-const terrainRoutes = require("./src/routes/terrain.routes.js");
-
-//import des durées routes
-const dureereservationRoutes = require("./src/routes/dureereservation.routes.js");
-
-//import typeterrain
-const typeterrainRoutes = require("./src/routes/typeterrain.routes.js");
+const roleRoute = require("./src/routes/role.routes.js");
 
 //creation des users
 app.use("/api/v1/user", userRoutes);
 
-//creation des fives
-app.use("/api/v1/five", fiveRoutes);
+//creation des annonces
+app.use("/api/v1/annonce", annonceRoutes);
 
-//creation des reservations
-app.use("/api/v1/reservation", reservationRoutes);
-
-//creation des localisations
-app.use("/api/v1/localisation", localisationRoutes);
-
-//creation des terrains
-app.use("/api/v1/terrain", terrainRoutes);
-
-//creation des durées
-app.use("/api/v1/dureereservation", dureereservationRoutes);
-
-//creation des types
-app.use("/api/v1/typeterrain", typeterrainRoutes);
+//creation des roles
+app.use("/api/v1/role", roleRoutes);
 
 //creation desimages
 app.use("/images", express.static("images"));
