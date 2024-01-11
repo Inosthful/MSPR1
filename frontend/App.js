@@ -1,19 +1,19 @@
-import { StatusBar } from 'expo-status-bar';
+
 import { StyleSheet, Text, View, Image} from 'react-native';
-import ImageViewer from './components/UTILE';
-import Button from './components/Button';
-import * as ImagePicker from 'expo-image-picker';
+
+
 import { useEffect, useState } from 'react';
-import CircleButtons from './components/CircleButtons';
-import IconButton from './components/IconButton';
-import EmojiPicker from "./components/EmojiPicker";
-import EmojiList from './components/EmojiList';
-import EmojiSticker from './components/EmojiSticker';
+
 import { GestureHandlerRootView, ScrollView } from "react-native-gesture-handler";
 import Home from './views/Home';
 import Login from './views/Login';
+import Register from './views/Register';
 
-//j
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+
+
 
 export default function App() {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -38,12 +38,16 @@ export default function App() {
   // };
   // <ImageViewer source={{ uri : 'https://img.freepik.com/photos-gratuite/peinture-lac-montagne-montagne-arriere-plan_188544-9126.jpg?w=2000'}} selectedImage={selectedImage} />
 // UTILE POUR IMAGE PICKER
+const Stack = createStackNavigator();
 
   useEffect(() => {
     onLog();
   }, []); 
 
   const onLog = () => {
+    console.log('Executing onLog...');
+    // Logique de connexion
+    // Mettez à jour setIsLog en fonction de l'état de connexion
         // if (isLog) {
     //   setIsLog(true);
     //   return;
@@ -51,33 +55,28 @@ export default function App() {
 
   };
 
-  const onAddSticker = () => {
-    setIsModalVisible(true);
-  };
+  // const onAddSticker = () => {
+  //   setIsModalVisible(true);
+  // };
 
-  const onSaveImageAsync = async () => {};
+  // const onSaveImageAsync = async () => {};
 
-  const onModalClose = () => {
-    setIsModalVisible(false);
-  };
+  // const onModalClose = () => {
+  //   setIsModalVisible(false);
+  // };
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-
-
-    <ScrollView>
-
+    <NavigationContainer>
         <View style={styles.imageContainer}>
-     
-      {isLog ? (
-        <View style={styles.optionsContainer}>
-          <Home/>
-      </View>
-      ) : (
-        <Login/>
-       )}
-     </View>
-     </ScrollView>  
-     </GestureHandlerRootView>
+        <Stack.Navigator
+  initialRouteName="Home" screenOptions= {{ headerShown: false, }}>            
+              <Stack.Screen name="Home" component={Home} />
+       
+              <Stack.Screen name="Login" component={Login} />
+              <Stack.Screen name="Register" component={Register} />
+
+          </Stack.Navigator>
+        </View>
+    </NavigationContainer>
   );
 }
 
@@ -87,7 +86,7 @@ const styles = StyleSheet.create({
     // display: 'flex',
     // justifyContent: 'center',
     // alignItems: 'center',
-    flex: 1,
+    // flex: 1,
   },
   optionsContainer: {
     backgroundColor: '#F6F4EE',

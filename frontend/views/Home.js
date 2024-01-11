@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet,View, Text, Pressable,Image } from 'react-native';
+import { StyleSheet,View, Text, Pressable,Image, ScrollView } from 'react-native';
 import Header from '../components/Header';
 
 // redirectToItem = () => {
@@ -8,7 +8,7 @@ import Header from '../components/Header';
 
 const Home = () => {
     return (
-        <View>
+        <ScrollView>
         <Header/>
         <View style={styles.container}>
             <Text style={styles.title}>Liste des plantes a gardées :</Text>
@@ -28,7 +28,6 @@ const Home = () => {
                     <View style={styles.inItem}>
                     <Image source={{uri :'https://pbs.twimg.com/profile_images/1704553800579567616/aGdOREDF_400x400.jpg'}} style={{width: 130, height: 170}}/>
                     <Text style={styles.textInItem} numberOfLines={10}> Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis atque sequi dicta illo cumque consequatur magni explicabo sunt adipisci eum. Modi consequatur qui quibusdam vitae dolores id autem explicabo laborum.</Text>
-
                     </View>
                     <View style={styles.inItemDate}><Text>24/42/1536</Text></View>
 
@@ -58,7 +57,7 @@ const Home = () => {
             </View>
         </View>
 
-        </View>
+        </ScrollView>
     );
 };
 
