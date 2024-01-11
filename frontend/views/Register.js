@@ -10,18 +10,20 @@ const Login = () => {
 
          
             <View style={styles.textContainer}>
-            <Text style={styles.textLogin}>Login</Text>
+            <Text style={styles.textLogin}>Inscription</Text>
 
       
             <View style={styles.inputs}>
-            <TextInput style={styles.input} placeholder='Username' placeholderTextColor="#7f8c8d"/>
-            <TextInput style={styles.input} placeholder='Password' placeholderTextColor="#7f8c8d" secureTextEntry />
+            <TextInput style={styles.input} placeholder='Adresse e-mail' placeholderTextColor="#7f8c8d" plce/>
+            <TextInput style={styles.input} placeholder='Mot de passe' placeholderTextColor="#7f8c8d" secureTextEntry />
+            <TextInput style={styles.input} placeholder='Confirmer mot de passe' placeholderTextColor="#7f8c8d" secureTextEntry />
+
             </View>
             {/* onChangeText={(text) => setPassword(text)}
         value={password} */}
     
             <View style={styles.buttonContainer}>
-                <Pressable style={styles.button}>football</Pressable>
+                <Pressable style={styles.button}>S'inscrire</Pressable>
             </View>
             </View>
        
@@ -42,13 +44,12 @@ const styles = StyleSheet.create({
         paddingBottom: 30,
         color: 'white',
         fontWeight: 'bold',
+    
     },
     inputs:{
         display: 'flex',
         flexDirection: 'column',
         gap: 20,
-
-
     },
     input:{
         height: 40,

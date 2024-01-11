@@ -1,4 +1,6 @@
 import { View, Pressable, StyleSheet,Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 // import router from '../../backend/routes/api';
 
 const redirectToAccountTry = () => {
@@ -7,6 +9,8 @@ const redirectToAccountTry = () => {
 }
 
 export default function Header({}) {
+    const navigation = useNavigation();
+
   return (
     <View>   
         <View style={styles.head}>
@@ -18,10 +22,19 @@ export default function Header({}) {
              <Pressable style={styles.btn1}><Text style={styles.inBtn1}>Recherche Genre</Text></Pressable>
 
              </View>
-        <View>
-             <Pressable onPress={redirectToAccountTry} style={styles.btn1}><Text style={styles.inBtn1}>Mon Compte</Text></Pressable>
+             <View>
+             <Pressable onPress={() => navigation.navigate('Home')} style={styles.btn1}><Text style={styles.inBtn1}>Accueil</Text></Pressable>
 
         </View>
+        <View>
+             <Pressable onPress={() => navigation.navigate('Login')} style={styles.btn1}><Text style={styles.inBtn1}>Mon Compte</Text></Pressable>
+
+        </View>
+        <View>
+             <Pressable onPress={() => navigation.navigate('Register')} style={styles.btn1}><Text style={styles.inBtn1}>Inscription</Text></Pressable>
+
+        </View>
+        
          </View>
     </View> 
     </View>
