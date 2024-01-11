@@ -1,0 +1,47 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Définir le modèle pour la table User
+model User {
+  idUser           Int       @id @default(autoincrement())
+  nom              String
+  prenom           String
+  numeroTelephone  String
+  mail             String
+  ville            String
+  adresse          String
+  latitude         Float
+  longitude        Float
+  surnom           String
+  idRole           Int
+  role             Role      @relation(fields: [idRole], references: [idRole])
+}
+
+// Définir le modèle pour la table Role
+model Role {
+  idRole    Int     @id @default(autoincrement())
+  labelRole String
+  users     User[]
+}
+
+// Définir le modèle pour la table Annonce
+model Annonce {
+  idAnnonce        Int      @id @default(autoincrement())
+  titre            String
+  localisation     String
+  description      String
+  dateDebut        DateTime
+  dateFin          DateTime
+  commentaireBotaniste String
+  idUser           Int
+}
+
