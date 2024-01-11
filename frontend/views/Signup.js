@@ -1,35 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, ScrollView, StyleSheet, TextInput, Pressable } from 'react-native';
 import Header from '../components/Header';
+import axios from 'axios';
+
 
 const Login = () => {
-    return (
-            <View style={styles.container}>
-            <Header />
-            <View style={styles.loginCenter}>
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
-         
-            <View style={styles.textContainer}>
-            <Text style={styles.textLogin}>Inscription</Text>
+  const handleSignUp = () => {
+    const userData = {
+      emailUser: email,
+      motdepasseUser: password,
+      // autres champs si nécessaire
+    };
 
-      
-            <View style={styles.inputs}>
-            <TextInput style={styles.input} placeholder='Adresse e-mail' placeholderTextColor="#7f8c8d" plce/>
-            <TextInput style={styles.input} placeholder='Mot de passe' placeholderTextColor="#7f8c8d" secureTextEntry />
-            <TextInput style={styles.input} placeholder='Confirmer mot de passe' placeholderTextColor="#7f8c8d" secureTextEntry />
+    // Remplacez l'URL par l'URL réelle de votre backend
+    axios.post('https://votre-backend.com/signup', userData)
+      .then(response => {
+        // Gérer la réponse du backend ici
+        console.log('Réponse du backend:', response.data);
+      })
+      .catch(error => {
+        console.error('Erreur lors de la requête au backend:', error);
+      });
+  };
 
-            </View>
-            {/* onChangeText={(text) => setPassword(text)}
-        value={password} */}
-    
-            <View style={styles.buttonContainer}>
-                <Pressable style={styles.button}>S'inscrire</Pressable>
-            </View>
-            </View>
-       
-            </View>
+  return (
+    <View style={styles.container}>
+      <Header />
+      <View style={styles.loginCenter}>
+        <View style={styles.textContainer}>
+          <Text style={styles.textLogin}>Inscription</Text>
+          <View style={styles.inputs}>
+            <TextInput
+              style={styles.input}
+              placeholder='Adresse e-mail'
+              placeholderTextColor="#7f8c8d"
+              value={email}
+              onChangeText={(text) => setEmail(text)}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder='Mot de passe'
+              placeholderTextColor="#7f8c8d"
+              secureTextEntry
+              value={password}
+              onChangeText={(text) => setPassword(text)}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder='Confirmer mot de passe'
+              placeholderTextColor="#7f8c8d"
+              secureTextEntry
+              value={confirmPassword}
+              onChangeText={(text) => setConfirmPassword(text)}
+            />
+          </View>
+          <View style={styles.buttonContainer}>
+            <Pressable style={styles.button} onPress={handleSignUp}>
+              S'inscrire
+            </Pressable>
+          </View>
         </View>
-    );
+      </View>
+    </View>
+  );
 };
 
 export default Login;

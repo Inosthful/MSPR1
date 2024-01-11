@@ -1,33 +1,54 @@
 import React from 'react';
 import { View, Text, ScrollView, StyleSheet, TextInput, Pressable } from 'react-native';
 import Header from '../components/Header';
+import axios from 'axios';
+
 
 const Login = () => {
-    return (
-            <View style={styles.container}>
-            <Header />
-            <View style={styles.loginCenter}>
-
-         
-            <View style={styles.textContainer}>
-            <Text style={styles.textLogin}>Login</Text>
-
-      
-            <View style={styles.inputs}>
-            <TextInput style={styles.input} placeholder='Username' placeholderTextColor="#7f8c8d"/>
-            <TextInput style={styles.input} placeholder='Password' placeholderTextColor="#7f8c8d" secureTextEntry />
-            </View>
-            {/* onChangeText={(text) => setPassword(text)}
-        value={password} */}
-    
-            <View style={styles.buttonContainer}>
-                <Pressable style={styles.button}>football</Pressable>
-            </View>
-            </View>
-       
-            </View>
-        </View>
-    );
+    const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
+const handleRegistration = async () => {
+    try {
+      const response = await axios.post('http://votre-ip-ou-domaine:3001/api/register', {
+        email: 'email@example.com',
+        password: 'motdepasse',
+      });
+  
+      console.log(response.data.message); // Devrait afficher "Utilisateur enregistré avec succès" si tout fonctionne correctement
+    } catch (error) {
+      console.error('Erreur lors de l\'enregistrement de l\'utilisateur :', error);
+    }
+  };
+  return (
+  <View style={styles.container}>
+  <Header />
+  <View style={styles.loginCenter}>
+    <View style={styles.textContainer}>
+      <Text style={styles.textLogin}>Inscription</Text>
+      <View style={styles.inputs}>
+        <TextInput
+          style={styles.input}
+          placeholder='Adresse e-mail'
+          placeholderTextColor="#7f8c8d"
+          onChangeText={(text) => setEmail(text)}
+          value={email}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder='Mot de passe'
+          placeholderTextColor="#7f8c8d"
+          secureTextEntry
+          onChangeText={(text) => setPassword(text)}
+          value={password}
+        />
+        <Pressable style={styles.button} onPress={handleRegistration}>
+          <Text style={styles.buttonText}>S'inscrire</Text>
+        </Pressable>
+      </View>
+    </View>
+  </View>
+</View>
+);
 };
 
 export default Login;
